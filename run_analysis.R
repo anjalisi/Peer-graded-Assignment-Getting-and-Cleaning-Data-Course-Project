@@ -94,3 +94,4 @@ DataFinal <- TidyData %>%
       summarise_all(funs(mean))
 write.table(DataFinal, "TidyData.txt", row.name=FALSE)
 str(DataFinal)
+#Looking at the final data
