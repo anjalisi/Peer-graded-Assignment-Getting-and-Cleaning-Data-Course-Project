@@ -12,7 +12,6 @@ download.file(fileUrl, destfile = "./data/Dataset.zip")
 #unzip the dataset
 unzip(zipfile = "./data/Dataset.zip", exdir = "./data")
 ```
-<br>
 2. **Assign each data to variables** <br>
    a. features <- features.txt : 561 rows, 2 columns <br>
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.<br>
@@ -37,3 +36,21 @@ contains train data of activities’code labels<br>
       c. Subject (10299 rows, 1 column) is created by merging subject_train and subject_test using rbind() function <br>
       d. Merged_Data (10299 rows, 563 column) is created by merging Subject, Y and X using cbind() function <br>
       
+4. **Extracts only the measurements on the mean and standard deviation for each measurement** <br>
+      a. TidyData (10299 rows, 88 columns) is created by subsetting Merged_Data, selecting only columns: subjectId, activityId and the measurements on the mean and standard deviation (std) for each measurement. <br>
+      
+5. **Uses descriptive activity names to name the activities in the data set** <br>
+      a. Entire numbers in activityId column of the TidyData replaced with corresponding activity taken from second column of the activities variable<br>
+
+6. **Appropriately labels the data set with descriptive variable names**<br>
+      a. activity column in TidyData renamed into activities. <br>
+      b. All Acc in column’s name replaced by Accelerometer
+      c. All Gyro in column’s name replaced by Gyroscope
+      d. All BodyBody in column’s name replaced by Body
+e. All Mag in column’s name replaced by Magnitude
+f. All start with character f in column’s name replaced by Frequency
+g. All start with character t in column’s name replaced by Time
+
+7. **From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject**<br>
+      a. DataFinal (180 rows, 88 columns) is created by sumarizing TidyData taking the means of each variable for each activity and each subject, after groupped by subject and activity.
+b. Export DataFinal into TidyData.txt file.      
